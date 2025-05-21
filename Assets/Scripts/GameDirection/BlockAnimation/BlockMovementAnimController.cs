@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class BlockMovementAnimController : MonoBehaviour
 {
-    public Vector3 movementStartPos;
+    private Vector3 movementStartPos;
 
-    public Vector3 movementDestination;
+    private Vector3 movementDestination;
 
     private float animDuration;
     private float animFraction;

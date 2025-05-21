@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class TileController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector]
+    public Color initColor;
+
+    private void OnEnable() {}
+
+    public void FadeTile(float de, Color col)
     {
-        
+        FadeBlockAnimController animController = GetComponent<FadeBlockAnimController>();
+        animController.enabled = true;
+        animController.SetAnim(de, col);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void FallTile(float de, BlockFallAnimController.FallDirection dir)
     {
-        
+        BlockFallAnimController animController = GetComponent<BlockFallAnimController>();
+        animController.enabled = true;
+        animController.SetAnim(de, dir);
+
+    }
+
+    public void DestroyTile(float de)
+    {
+        BlockDestructionAnimController animController = GetComponent<BlockDestructionAnimController>();
+        animController.enabled = true;
+        animController.SetAnim(de);
+
+    }
+
+
+    private void Awake()
+    {
+        initColor = GetComponent<SpriteRenderer>().color;   
     }
 }

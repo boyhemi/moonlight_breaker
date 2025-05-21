@@ -10,12 +10,12 @@ public class FadeBlockAnimController : MonoBehaviour
     private Color currentColor;
     private Color newColor;
 
-    private void SetAnim(float dir, Color col)
+    public void SetAnim(float dir, Color col)
     {
         if (dir != 0.0f)
         {
             animDuration = dir;
-            animFraction = 0.0fl
+            animFraction = 0.0f;
             currentColor = GetComponent<SpriteRenderer>().color;
             newColor = col;
         }
