@@ -4,10 +4,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    public GameObject settingsPanel;
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    public void OpenSettings(bool isOpen)
+    {
+        settingsPanel.SetActive(isOpen);
+    }
+
+
+    public void PauseGame(bool isPaused)
+    {
+        if (isPaused)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 
     // Update is called once per frame
