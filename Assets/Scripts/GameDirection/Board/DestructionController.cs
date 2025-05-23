@@ -58,8 +58,7 @@ public class DestructionController : MonoBehaviour
 
     public IEnumerator AllBlocksDestruction()
     {
-        // TO DO AUDIO MANAGER
-        //AudioManager.ins.PlayDestroySound();
+        AudioManager.init.PlaySFXAudio((int)AudioManager.sfxlips.DESTROYED_BLOCK);
 
         for (int a = 0; a < BoardController.BOARD_SIZE; a++)
         {

@@ -52,7 +52,10 @@ public class DataManager : MonoBehaviour
         {
             return true;
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     public void SetBoolean(string dataType, bool isData)

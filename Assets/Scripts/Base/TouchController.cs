@@ -146,7 +146,7 @@ public class TouchController : MonoBehaviour
                                 }
                             }
 
-                            // AudioManager.ins.PlayBlockSound();
+                            AudioManager.init.PlaySFXAudio((int)AudioManager.sfxlips.UI_TAP);
 
                             BoardController.init.InitiateBlockMovement(draggedTeteromino.posId);
                             BoardCheckerManager.init.VaildateBoard();
