@@ -63,10 +63,12 @@ public class BoardCheckerManager : MonoBehaviour
 
             //TO DO GAME OVER
 
-            // if (oa && count == BLOCKS_AMOUNT)
-            //     GameManager.ins.RestartGame();
-            // else if (count == BLOCKS_AMOUNT)
-            //     StartCoroutine(GameManager.ins.WaitForFade());
+            if (isValidated && spaceCount == BoardController.BLOCK_AMOUNT)
+            {
+                GameManager.init.GameOver();
+            }
+            else if (spaceCount == BoardController.BLOCK_AMOUNT)
+                GameManager.init.GameOver();
 
 
         }

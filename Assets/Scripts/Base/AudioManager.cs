@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public enum bgmClip { PLAYING, GAME_OVER }
-    public enum sfxlips { DRAGGED_BLOCK, DESTROYED_BLOCK }
+    public enum sfxlips { DESTROYED_BLOCK, UI_TAP }
 
     public AudioSource bgmAudio;
     public AudioSource sfxAudio;

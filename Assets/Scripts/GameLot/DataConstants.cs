@@ -12,5 +12,8 @@ public static class DataConstants
 
     public static string SFX_STATE = "SFX";
 
+    public static string INITAL_LAUNCH = "firststart";
+
+
 
 }
