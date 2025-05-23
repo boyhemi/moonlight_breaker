@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
             AudioManager.init.PlayBGMAudio((int)AudioManager.bgmClip.PLAYING);
         }
         InitalizeBlocks(true);
+        ScoreManager.init.currentScoreText.text = "0";
         gameOver.SetActive(false);
 
 

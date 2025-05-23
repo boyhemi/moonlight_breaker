@@ -183,7 +183,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c395f7c1816da4b9da437aaba17d40a5, type: 2}
-  m_sharedMaterial: {fileID: 8775172544129849348, guid: 3705684f492ec49c2891b827e880fcaa, type: 2}
+  m_sharedMaterial: {fileID: -7230489946655019342, guid: c395f7c1816da4b9da437aaba17d40a5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1551,7 +1551,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.025231406, g: 0.025506217, b: 0.4745098, a: 0.56078434}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2474,7 +2474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1014757971
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2801,7 +2801,7 @@ MonoBehaviour:
   m_text: High Score
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a7232e3085e434b9ba9214f5d0201e0b, type: 2}
-  m_sharedMaterial: {fileID: 8775172544129849348, guid: 3705684f492ec49c2891b827e880fcaa, type: 2}
+  m_sharedMaterial: {fileID: -7420225149110131321, guid: a7232e3085e434b9ba9214f5d0201e0b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3336,7 +3336,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c395f7c1816da4b9da437aaba17d40a5, type: 2}
-  m_sharedMaterial: {fileID: 8775172544129849348, guid: 3705684f492ec49c2891b827e880fcaa, type: 2}
+  m_sharedMaterial: {fileID: -7230489946655019342, guid: c395f7c1816da4b9da437aaba17d40a5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3470,7 +3470,7 @@ MonoBehaviour:
   m_text: "As the moon rises, your journey ends\u2026 for now."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a7232e3085e434b9ba9214f5d0201e0b, type: 2}
-  m_sharedMaterial: {fileID: 8775172544129849348, guid: 3705684f492ec49c2891b827e880fcaa, type: 2}
+  m_sharedMaterial: {fileID: -7420225149110131321, guid: a7232e3085e434b9ba9214f5d0201e0b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3604,7 +3604,7 @@ MonoBehaviour:
   m_text: Your Score
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a7232e3085e434b9ba9214f5d0201e0b, type: 2}
-  m_sharedMaterial: {fileID: 8775172544129849348, guid: 3705684f492ec49c2891b827e880fcaa, type: 2}
+  m_sharedMaterial: {fileID: -7420225149110131321, guid: a7232e3085e434b9ba9214f5d0201e0b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4028,7 +4028,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 167.4}
+  m_AnchoredPosition: {x: 0, y: 167.4}
   m_SizeDelta: {x: 0, y: 804.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1623494025
