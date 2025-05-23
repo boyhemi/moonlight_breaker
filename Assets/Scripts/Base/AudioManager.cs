@@ -4,15 +4,72 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum bgmClip { PLAYING, GAME_OVER }
+    public enum sfxlips { DRAGGED_BLOCK, DESTROYED_BLOCK }
+
+    public AudioSource bgmAudio;
+    public AudioSource sfxAudio;
+
+    private AudioClip currentBgm;
+    private AudioClip currentSfx;
+
+    public AudioClip[] bgmClips;
+    public AudioClip[] sfxClips;
+
+    public static AudioManager init;
+
+
+    void Awake()
     {
-        
+        if (!init)
+        {
+            init = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayBGMAudio(int clip)
     {
-        
+        if (bgmAudio.isPlaying)
+        {
+            bgmAudio.Stop();
+        }
+
+        currentBgm = bgmClips[clip];
+
+        bgmAudio.clip = currentBgm;
+
+        bgmAudio.Play();
+
     }
+
+    public void PlaySFXAudio(int clip)
+    {
+        if (sfxAudio.isPlaying)
+        {
+            sfxAudio.Stop();
+        }
+
+        currentSfx = sfxClips[clip];
+
+        sfxAudio.clip = currentSfx;
+
+        sfxAudio.Play();
+    }
+
+    public void MuteBGM(bool isMute)
+    {
+        if (isMute)
+            bgmAudio.mute = true;
+        else
+            bgmAudio.mute = false;
+    }
+
+    public void MuteSFX(bool isMute)
+    {
+        if (isMute)
+            sfxAudio.mute = true;
+        else
+            sfxAudio.mute = false;
+    }
+
 }

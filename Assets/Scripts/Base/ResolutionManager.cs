@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D.Animation;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResolutionManager : MonoBehaviour
 {
  public const float TABLET_ASPECT_RATIO = 1.4f;
     public const float TABLET_HALF_WIDTH = 6.5f;
     public const float HALF_WIDTH = 5.35f;
-    public const float BLOCK_SIZE = 1.0f;
-    public const int BOARD_TILE_DISTANCE = 3;
-    public const int SCALED_BLOCK_TILE_DISTANCE = 1;
+    public const float BLOCK_SIZE = 1.2f;
+    public const float BOARD_TILE_DISTANCE = 1f;
+    public const float SCALED_BLOCK_TILE_DISTANCE = 1;
     public const float SCALED_BLOCK_SCALE = 0.6f;
     public const int SCORE_ICON_HEIGHT = 134;
 
-    public Transform background;
+    public static CanvasScaler mainCanvas;
 
     private ScreenOrientation screenOrientation;
 
@@ -39,16 +41,16 @@ public class ResolutionManager : MonoBehaviour
         return (int)((y - Camera.main.transform.position.y + fs / 2) / fs * Screen.height);
     }
 
-    // public static int GetScoreY()
-    // {
-    //     float boardY = BoardManager.BOARD_SIZE - BLOCK_SIZE / 2;
-    //     return Screen.height - (Screen.height - WorldToScreen(boardY)) / 2; 
-    // }
+    public static int GetScoreY()
+    {
+        float boardY = BoardController.BOARD_SIZE - BLOCK_SIZE / 2;
+        return Screen.height - (Screen.height - WorldToScreen(boardY)) / 2; 
+    }
 
-    // public static float GetBlockY()
-    // {
-    //     return (-GetOrthographicSize() + Camera.main.transform.position.y - BLOCK_SIZE / 2) / 2;
-    // }
+    public static float GetBlockY()
+    {
+        return (-GetOrthographicSize() + Camera.main.transform.position.y - BLOCK_SIZE / 2) / 2;
+    }
 
     public static Vector3 GetBoardTileScale()
     {
@@ -64,7 +66,7 @@ public class ResolutionManager : MonoBehaviour
 
     public static Vector2 GetReferenceResolution()
     {
-        float aspectRatio = (float)Screen.height / Screen.width;
+        float aspectRatio = (float)mainCanvas.referenceResolution.x/ mainCanvas.referenceResolution.y;
         return new Vector2(720, (int)(720 * aspectRatio));
     }
 
@@ -76,16 +78,16 @@ public class ResolutionManager : MonoBehaviour
 
     private void Awake()
 	{
-        StartCoroutine(SetGameScale());
+        StartCoroutine(SetResolution());
     }
 
     private void Update()
     {
         if (screenOrientation != Screen.orientation)
-            StartCoroutine(SetGameScale(0.1f));
+            StartCoroutine(SetResolution(0.1f));
     }
 
-    private IEnumerator SetGameScale(float s = 0)
+    private IEnumerator SetResolution(float s = 0)
     {
         screenOrientation = Screen.orientation;
 
@@ -98,18 +100,17 @@ public class ResolutionManager : MonoBehaviour
         // SetPositionY(GameManager.ins.bestScoreIconLayer.GetComponent<RectTransform>(), y);
         // SetPositionY(GameManager.ins.scoreLayer.GetComponent<RectTransform>(), y);
 
-        // float blockY = GetBlockY();
-        // for (int i = 0; i < BoardManager.BLOCKS_AMOUNT; i++)
-        // {
-        //     if (BoardManager.ins.blocks[i])
-        //     {
-        //         Vector3 p = BoardManager.ins.blocks[i].transform.position;
-        //         p = new Vector3(p.x, blockY, p.y);
-        //         BoardManager.ins.blocks[i].transform.position = p;
-        //     }
-        // }
+        float blockY = GetBlockY();
+        for (int i = 0; i < BoardController.BLOCK_COUNT; i++)
+        {
+            if (BoardController.init.blockArray[i])
+            {
+                Vector3 p = BoardController.init.blockArray[i].transform.position;
 
-        Vector3 bgSize = new Vector3(2 * Camera.main.orthographicSize / GetAspectRatio(), Camera.main.orthographicSize, 1);
-        background.localScale = bgSize;
+                p = new Vector3(p.x, blockY, p.y);
+                BoardController.init.blockArray[i].transform.position = p;
+            }
+        }
+
     }
 }

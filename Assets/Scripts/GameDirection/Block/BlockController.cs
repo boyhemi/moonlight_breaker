@@ -32,9 +32,7 @@ public class BlockController : MonoBehaviour
         Vector2 blockScale = transform.localScale;
         Vector2 colliderSize = GetComponent<BoxCollider>().size * blockScale;
 
-        // Vector3 position = new Vector3(colliderSize.x / 2 - 0.5f + colliderSize.x * i, GameScaler.GetBlockY(), 0);
-
-        Vector3 position = new Vector3(0, 0, 0);
+        Vector3 position = new Vector3(colliderSize.x / 2 - 0.5f + colliderSize.x * i, ResolutionManager.GetBlockY(), 0);
 
         basePos = position;
 
@@ -62,6 +60,14 @@ public class BlockController : MonoBehaviour
         return transform.GetChild(1).GetComponent<SpriteRenderer>().color;
     }
 
+    public Vector2Int GetInitialBlocks()
+    {
+        Vector3 pr;
+        pr = transform.GetChild(0).transform.position;
+        return new Vector2Int((int)(pr.x + 0.5f), (int)(pr.y + 0.5f));
+
+    }
+
     public void ChangeBlockColor(Color color)
     {
         foreach (Transform t in transform)
@@ -74,11 +80,19 @@ public class BlockController : MonoBehaviour
         foreach (Transform t in transform)
             t.localScale = sc;
     }
+    
+    public void BlockScaler(bool s, float t)
+    {
+        GetComponent<ScaleBlockAnimController>().enabled = true;
+        GetComponent<ScaleBlockAnimController>().SetAnim(s, t);
+    }
 
-    private void Awake() {
-        // baseScaleValue = BoardManager.ins.boardTileScale;
-        // finalScale = BoardManager.ins.scaledBlockTileScale;
 
-        ScaleBlockTiles(finalScale); 
+    private void Awake()
+    {
+        baseScaleValue = BoardController.init.boardScaleTile;
+        finalScale = BoardController.init.finalScaleBlockTileScale;
+
+        ScaleBlockTiles(finalScale);
     }
 }
