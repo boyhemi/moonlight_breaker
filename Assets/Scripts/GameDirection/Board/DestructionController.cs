@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -24,26 +25,23 @@ public class DestructionController : MonoBehaviour
         linesDestroyed = 0;
         for (int i = 0; i < BoardController.BOARD_SIZE; i++)
         {
-            destroyedLinesPos[i] = new Vector2Int(-1, 1);
+            destroyedLinesPos[i] = new Vector2Int(-1, -1);
         }
     }
 
 
-    public void StartDestruction(int d, bool e)
+    public void StartDestruction(int i, bool e)
     {
         if (e)
         {
             for (int a = 0; a < BoardController.BOARD_SIZE; a++)
-            {
-                brokenBlockAnimations[d, a] = bc.boardBlockArray[d, a].GetComponent<BlockDestructionAnimController>();
-            }
+                brokenBlockAnimations[i, a] = bc.boardBlockArray[i, a].GetComponent<BlockDestructionAnimController>();
         }
         else
         {
             for (int b = 0; b < BoardController.BOARD_SIZE; b++)
-            {
-                brokenBlockAnimations[b, d] = bc.boardBlockArray[b, d].GetComponent<BlockDestructionAnimController>();
-            }
+                brokenBlockAnimations[b, i] = bc.boardBlockArray[b, i].GetComponent<BlockDestructionAnimController>();
+            
         }
 
         linesDestroyed++;
@@ -52,7 +50,7 @@ public class DestructionController : MonoBehaviour
         {
             if (destroyedLinesPos[c] == new Vector2Int(-1, -1))
             {
-                destroyedLinesPos[c] = e ? new Vector2Int(d, -1) : new Vector2Int(-1, d);
+                destroyedLinesPos[c] = e ? new Vector2Int(i, -1) : new Vector2Int(-1, i);
                 break;
             }
         }
@@ -65,7 +63,7 @@ public class DestructionController : MonoBehaviour
 
         for (int a = 0; a < BoardController.BOARD_SIZE; a++)
         {
-            for (int b = 0; a < BoardController.BOARD_SIZE; b++)
+            for (int b = 0; b < BoardController.BOARD_SIZE; b++)
             {
                 if (destroyedLinesPos[b] == new Vector2Int(-1, -1))
                     break;
@@ -80,15 +78,14 @@ public class DestructionController : MonoBehaviour
             }
         }
 
-        // MOVE TO SCORE MANAGER
-        // GameManager.ins.ChangePoints(bm.GetEmptyFieldsAmount(), destroyedLines);
-        // MOVE TO BOARD CHECKER
+        ScoreManager.init.IncrementScore(SpawnManager.init.GetEmptyBlockData(), linesDestroyed);
         BoardCheckerManager.init.VaildateBoardSpace(false);
 
         for (int c = 0; c < BoardController.BOARD_SIZE; c++)
         {
             for (int d = 0; d < BoardController.BOARD_SIZE; d++)
             {
+
                 if (destroyedLinesPos[d] == new Vector2Int(-1, -1))
                     break;
 
@@ -96,12 +93,14 @@ public class DestructionController : MonoBehaviour
                 Vector2Int dpos = destroyedLinesPos[d];
                 if (dpos.x != -1 && brokenBlockAnimations[dpos.x, bindex] && !brokenBlockAnimations[dpos.x, bindex].enabled)
                 {
+                    Debug.Log($"Trigger anim at [{dpos.x},{bindex}]");
                     brokenBlockAnimations[dpos.x, bindex].enabled = true;
                     brokenBlockAnimations[dpos.x, bindex].SetAnim(0.25f);
                     brokenBlockAnimations[dpos.x, bindex] = null;
                 }
                 else if (dpos.y != -1 && brokenBlockAnimations[c, dpos.y] && !brokenBlockAnimations[c, dpos.y].enabled)
                 {
+                    Debug.Log($"Trigger anim at [{c},{dpos.y}]");
                     brokenBlockAnimations[c, dpos.y].enabled = true;
                     brokenBlockAnimations[c, dpos.y].SetAnim(0.25f);
                     brokenBlockAnimations[c, dpos.y] = null;
@@ -153,23 +152,14 @@ public class DestructionController : MonoBehaviour
 
     void Awake()
     {
+
         if (!init)
         {
             init = this;
         }
 
         bc = GetComponent<BoardController>();
-    }
 
-    void Start()
-    {
- 
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -486,6 +486,7 @@ GameObject:
   - component: {fileID: 211214358}
   - component: {fileID: 211214357}
   - component: {fileID: 211214359}
+  - component: {fileID: 211214360}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -537,6 +538,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lastTouchPos: {x: 0, y: 0, z: 0}
   draggedTeteromino: {fileID: 0}
+--- !u!114 &211214360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211214356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1444f2ba4f04a0fbeea605a509aee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &256366951
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,51 +704,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
---- !u!1 &322178123
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 322178124}
-  - component: {fileID: 322178125}
-  m_Layer: 0
-  m_Name: DestructionController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &322178124
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 322178123}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2106121966}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &322178125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 322178123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 876f32ab0bba4454f86a28d7b3be226a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linesDestroyed: 0
 --- !u!1 &332252874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2662,8 +2630,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416529888}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.000061035156, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2681,6 +2649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b59414187d0946c8bc4e035fa0f5711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentScore: {fileID: 509180621}
+  highScore: {fileID: 1542070549}
 --- !u!1 &1521584765
 GameObject:
   m_ObjectHideFlags: 0
@@ -3405,6 +3375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2106121966}
   - component: {fileID: 2106121965}
+  - component: {fileID: 2106121967}
   m_Layer: 0
   m_Name: BoardController
   m_TagString: Untagged
@@ -3463,9 +3434,21 @@ Transform:
   m_Children:
   - {fileID: 2098342698}
   - {fileID: 2092572427}
-  - {fileID: 322178124}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2106121967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106121964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876f32ab0bba4454f86a28d7b3be226a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linesDestroyed: 0
 --- !u!1 &2115369242
 GameObject:
   m_ObjectHideFlags: 0

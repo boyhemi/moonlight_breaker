@@ -90,61 +90,97 @@ public class BoardCheckerManager : MonoBehaviour
 
 
     // Checks if line is horizontal or vertical
-    public void CheckLines(LineType line, int a, bool isVaildatedHLine = false)
+    public void CheckLines(LineType line, int a, bool isVaildated = false)
     {
-        if (isVaildatedHLine)
+        switch (line)
         {
-            TileController[,] tc = new TileController[BoardController.BOARD_SIZE, BoardController.BOARD_SIZE];
-            Array.Copy(BoardController.init.boardBlockArray, tc, BoardController.init.boardBlockArray.Length);
-
-            BlockController bc = TouchController.init.draggedTeteromino;
-            Vector2Int ib = bc.GetInitialBlocks();
-
-            for (int x = 0; x < bc.blockStructure.Length; x++)
-            {
-                if (bc.transform.GetChild(x).name == "Tile")
+            case LineType.Vertical:
+                if (isVaildated)
                 {
-                    TileController tcb = bc.transform.GetChild(x).GetComponent<TileController>();
-                    tc[ib.x + bc.blockStructure[x].x, ib.y + bc.blockStructure[x].y] = tcb;
-                }
-            }
+                    TileController[,] tc = new TileController[BoardController.BOARD_SIZE, BoardController.BOARD_SIZE];
+                    Array.Copy(BoardController.init.boardBlockArray, tc, BoardController.init.boardBlockArray.Length);
 
-            for (int i = 0; i < BoardController.BOARD_SIZE; i++)
-            {
-                if (!tc[a, i])
-                {
-                    return;
-                }
-            }
+                    BlockController bc = TouchController.init.draggedTeteromino;
+                    Vector2Int ib = bc.GetInitialBlocks();
 
-            for (int i = 0; i < BoardController.BOARD_SIZE; i++)
-            {
-                if (BoardController.init.boardBlockArray[a, i])
-                {
-                    BoardController.init.boardBlockArray[a, i].FadeTile(0.2f, bc.initalColor);
-                }
-            }
+                    for (int x = 0; x < bc.blockStructure.Length; x++)
+                    {
+                        if (bc.transform.GetChild(x).name == "Tile")
+                        {
+                            TileController tcb = bc.transform.GetChild(x).GetComponent<TileController>();
+                            tc[ib.x + bc.blockStructure[x].x, ib.y + bc.blockStructure[x].y] = tcb;
+                        }
+                    }
 
-        }
-        else
-        {
-            for (int i = 0; i < BoardController.BOARD_SIZE; i++)
-            {
-                if (!BoardController.init.boardBlockArray[a, i])
-                {
-                    return;
+                    for (int i = 0; i < BoardController.BOARD_SIZE; i++)
+                    {
+                        if (!tc[a, i])
+                        {
+                            return;
+                        }
+                    }
+
+                    for (int i = 0; i < BoardController.BOARD_SIZE; i++)
+                    {
+                        if (BoardController.init.boardBlockArray[a, i])
+                        {
+                            BoardController.init.boardBlockArray[a, i].FadeTile(0.2f, bc.initalColor);
+                        }
+                    }
+
                 }
-            }
-            switch (line)
-            {
-                case LineType.Horizontal:
-                    DestructionController.init.StartDestruction(a, false);
-                    break;
-                case LineType.Vertical:
+                else
+                {
+                    for (int i = 0; i < BoardController.BOARD_SIZE; i++)
+                    {
+                        if (!BoardController.init.boardBlockArray[a, i])
+                        {
+                            return;
+                        }
+                    }
+
                     DestructionController.init.StartDestruction(a, true);
-                    break;
-            }
+                }
+            break;
+
+            case LineType.Horizontal:
+                if (isVaildated)
+                {
+                    TileController[,] tc = new TileController[BoardController.BOARD_SIZE, BoardController.BOARD_SIZE];
+                    Array.Copy(BoardController.init.boardBlockArray, tc, BoardController.init.boardBlockArray.Length);
+
+                    BlockController bc = TouchController.init.draggedTeteromino;
+                    Vector2Int ic = bc.GetInitialBlocks();
+                    for (int i = 0; i < bc.blockStructure.Length; i++)
+                    {
+                        if (bc.transform.GetChild(i).name == "Tile")
+                        {
+                            TileController tcb = bc.transform.GetChild(i).GetComponent<TileController>();
+                            tc[ic.x + bc.blockStructure[i].x, ic.y + bc.blockStructure[i].y] = tcb;
+                        }
+                    }
+
+                    for (int x = 0; x < BoardController.BOARD_SIZE; x++)
+                        if (!tc[x, a])
+                            return;
+
+                    for (int x = 0; x < BoardController.BOARD_SIZE; x++)
+                        if (BoardController.init.boardBlockArray[x, a])
+                            BoardController.init.boardBlockArray[x, a].FadeTile(0.2f, bc.initalColor);
+                }
+                else
+                {
+                    for (int x = 0; x < BoardController.BOARD_SIZE; x++)
+                        if (!BoardController.init.boardBlockArray[x, a])
+                            return;
+
+                    DestructionController.init.StartDestruction(a, false);
+                }
+
+            break;
+            
         }
+       
     }
 
 

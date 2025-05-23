@@ -28,6 +28,7 @@ public class DataManager : MonoBehaviour
     public void SetString(string dataType, string value)
     {
         PlayerPrefs.SetString(dataType, value);
+        PlayerPrefs.Save();
     }
 
 
@@ -41,6 +42,7 @@ public class DataManager : MonoBehaviour
     public void SetInt(string dataType, int value)
     {
         PlayerPrefs.SetInt(dataType, value);
+        PlayerPrefs.Save();
     }
 
     public bool GetBoolean(string dataType)
@@ -63,6 +65,7 @@ public class DataManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(dataType, 0);
         }
+        PlayerPrefs.Save();
     }
 
 
@@ -93,6 +96,7 @@ public class DataManager : MonoBehaviour
         for (int i = 0; i < arrValue.Length; i++)
         {
             PlayerPrefs.SetFloat(i + dataType, arrValue[i]);
+            PlayerPrefs.Save();
         }
     }
 
