@@ -28,7 +28,6 @@ public class SettingsController : MonoBehaviour
             DataManager.init.SetBoolean(DataConstants.BGM_STATE, true);
             AudioManager.init.PlayBGMAudio((int)AudioManager.bgmClip.PLAYING);
             DataManager.init.SetBoolean(DataConstants.SFX_STATE, true);
-
             DataManager.init.SetBoolean(DataConstants.INITAL_LAUNCH, true);
         }
 
@@ -38,6 +37,7 @@ public class SettingsController : MonoBehaviour
         if (isBgmActive)
         {
             AudioManager.init.MuteBGM(false);
+            AudioManager.init.PlayBGMAudio((int)AudioManager.bgmClip.PLAYING);
             settingsButtons[(int)SettingButton.BGM].SetButtonGraphic((int)ButtonState.ButtonStateGraphic.toggled);
         }
         else

@@ -92,14 +92,12 @@ public class DestructionController : MonoBehaviour
                 Vector2Int dpos = destroyedLinesPos[d];
                 if (dpos.x != -1 && brokenBlockAnimations[dpos.x, bindex] && !brokenBlockAnimations[dpos.x, bindex].enabled)
                 {
-                    Debug.Log($"Trigger anim at [{dpos.x},{bindex}]");
                     brokenBlockAnimations[dpos.x, bindex].enabled = true;
                     brokenBlockAnimations[dpos.x, bindex].SetAnim(0.25f);
                     brokenBlockAnimations[dpos.x, bindex] = null;
                 }
                 else if (dpos.y != -1 && brokenBlockAnimations[c, dpos.y] && !brokenBlockAnimations[c, dpos.y].enabled)
                 {
-                    Debug.Log($"Trigger anim at [{c},{dpos.y}]");
                     brokenBlockAnimations[c, dpos.y].enabled = true;
                     brokenBlockAnimations[c, dpos.y].SetAnim(0.25f);
                     brokenBlockAnimations[c, dpos.y] = null;
