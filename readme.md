@@ -19,5 +19,8 @@ The player will obtain points when the horizontal blocks or vertical blocks are 
 This will appear if the player runs out of moves or space. The design language of the screen is like a paper
 so the retry button will blend in the screen and don't worry, it's clickable and working!
 
+Update in version 1.1:
+Added UI animations when opening or closing settings and for the game over screen.
+
 Unity version and tools used
 Unity version 2022.3.17f1.
