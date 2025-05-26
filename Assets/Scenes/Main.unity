@@ -645,6 +645,9 @@ MonoBehaviour:
   gameOver: {fileID: 454175004}
   currentScoreText: {fileID: 1188574122}
   highScoreText: {fileID: 14771038}
+  uiAnimators:
+  - {fileID: 856474094}
+  - {fileID: 1101559581}
 --- !u!4 &211214358
 Transform:
   m_ObjectHideFlags: 0
@@ -2264,6 +2267,7 @@ GameObject:
   - component: {fileID: 856474091}
   - component: {fileID: 856474093}
   - component: {fileID: 856474092}
+  - component: {fileID: 856474094}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -2285,10 +2289,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 305827095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: 0.0061646}
-  m_SizeDelta: {x: 1280, y: 2275.6}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0.006225586}
+  m_SizeDelta: {x: 0, y: -0.39990234}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &856474092
 MonoBehaviour:
@@ -2328,6 +2332,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856474090}
   m_CullTransparentMesh: 1
+--- !u!95 &856474094
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856474090}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3394e6aeaff374a4395ffe67e79eef38, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &879893280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2637,6 +2662,7 @@ GameObject:
   - component: {fileID: 1101559577}
   - component: {fileID: 1101559580}
   - component: {fileID: 1101559579}
+  - component: {fileID: 1101559581}
   m_Layer: 5
   m_Name: SettingsUI
   m_TagString: Untagged
@@ -2705,6 +2731,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101559576}
   m_CullTransparentMesh: 1
+--- !u!95 &1101559581
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101559576}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a36e829421f8643888654cb70803e892, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1104185513
 GameObject:
   m_ObjectHideFlags: 0

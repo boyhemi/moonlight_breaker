@@ -7,10 +7,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
+    public enum UiTransistions {SETTINGS_BACKGROUND, SETTINGS_UI, GAME_OVER }
+
     public static GameManager init;
     public GameObject settingsPanel, settingBG, gameOver;
 
     public TextMeshProUGUI currentScoreText, highScoreText;
+
+    public Animator[] uiAnimators;
 
     private bool isGameOver;
 
@@ -55,8 +59,21 @@ public class GameManager : MonoBehaviour
 
     public void OpenSettings(bool isOpen)
     {
-        settingsPanel.SetActive(isOpen);
-        settingBG.SetActive(isOpen);
+        if (isOpen)
+        {
+            settingsPanel.SetActive(isOpen);
+            settingBG.SetActive(isOpen);
+            uiAnimators[(int)UiTransistions.SETTINGS_BACKGROUND].Play("BGEnter");
+            uiAnimators[(int)UiTransistions.SETTINGS_UI].Play("SettingsEnter");
+
+ 
+        }
+        else
+        {
+            uiAnimators[(int)UiTransistions.SETTINGS_BACKGROUND].Play("BGExit");
+            uiAnimators[(int)UiTransistions.SETTINGS_UI].Play("SettingsExit");
+        }
+
     }
 
     public void GameOver()
@@ -120,6 +137,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (uiAnimators[(int)UiTransistions.SETTINGS_UI].GetCurrentAnimatorStateInfo(0).IsName("SettingsExit") &&uiAnimators[(int)UiTransistions.SETTINGS_UI].GetCurrentAnimatorStateInfo(0).normalizedTime > 1f)
+        {
+            settingsPanel.SetActive(false);
+            settingBG.SetActive(false);
+        }
     }
 }
