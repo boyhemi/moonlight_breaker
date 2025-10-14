@@ -14,9 +14,11 @@ public class ResolutionManager : MonoBehaviour
     public const float SCALED_BLOCK_SCALE = 0.6f;
     public const int SCORE_ICON_HEIGHT = 134;
 
-    public static CanvasScaler mainCanvas;
+    // public static CanvasScaler mainCanvas;
 
-    private ScreenOrientation screenOrientation;
+    // private ScreenOrientation screenOrientation;
+
+    public GameObject board;
 
     public static float GetAspectRatio()
     {
@@ -63,11 +65,11 @@ public class ResolutionManager : MonoBehaviour
         return new Vector3(scale, scale, scale);
     }
 
-    public static Vector2 GetReferenceResolution()
-    {
-        float aspectRatio = (float)mainCanvas.referenceResolution.x/ mainCanvas.referenceResolution.y;
-        return new Vector2(720, (int)(720 * aspectRatio));
-    }
+    // public static Vector2 GetReferenceResolution()
+    // {
+        // float aspectRatio = (float)mainCanvas.referenceResolution.x/ mainCanvas.referenceResolution.y;
+        // return new Vector2(720, (int)(720 * aspectRatio));
+    // }
 
     public static void SetPositionY(RectTransform rt, int y)
     {
@@ -82,13 +84,13 @@ public class ResolutionManager : MonoBehaviour
 
     private void Update()
     {
-        if (screenOrientation != Screen.orientation)
-            StartCoroutine(SetResolution(0.1f));
+        // if (screenOrientation != Screen.orientation)
+        //     StartCoroutine(SetResolution(0.1f));
     }
 
     private IEnumerator SetResolution(float s = 0)
     {
-        screenOrientation = Screen.orientation;
+        // screenOrientation = Screen.orientation;
 
         yield return new WaitForSeconds(s);
 
